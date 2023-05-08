@@ -16,7 +16,7 @@ namespace GoogleUI_Test
         {
             webdriver.Manage().Window.Maximize();
             webdriver.Navigate().GoToUrl("http://adactinhotelapp.com/");
-            Thread.Sleep(4000);
+            Thread.Sleep(3000);
             string data = webdriver.FindElement(By.XPath("//a[contains(text(),'New User Register Here')]")).Text;
             Assert.AreEqual(data, "New User Register Here", "Both data did not Match.");
             webdriver.Close();
