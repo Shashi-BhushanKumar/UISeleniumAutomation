@@ -4,6 +4,8 @@ using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Security.AccessControl;
 using System.Threading;
 
@@ -13,7 +15,24 @@ namespace GoogleUI_Test
     public class LoginPage
     {
         IWebDriver webdriver = new ChromeDriver();
-        
+
+        [TestMethod]
+        public void ToVerifyOnePlusMobile()
+        {
+            webdriver.Navigate().GoToUrl("https://www.amazon.in/");
+            Thread.Sleep(3000);
+            webdriver.FindElement(By.XPath("//div[@id='nav-xshop']//a[5]")).Click();
+            Thread.Sleep(5000);
+            webdriver.FindElement(By.XPath("//input[@type='checkbox']//following::span[11]")).Click();
+            Thread.Sleep(3000);
+            List<string> ele = new List<string>();
+            List<IWebElement> s = webdriver.FindElements(By.XPath("//span[@class='a-size-base-plus a-color-base a-text-normal']")).ToList();
+            string first = s[0].Text;
+            string second = s[1].Text;
+            Assert.IsTrue(first.Contains("OnePlus"));
+            Assert.IsTrue(second.Contains("OnePlus"));
+            webdriver.Close();
+        }
         [TestMethod]
         public void ToVerifyAdactinLoginPage()
         {
