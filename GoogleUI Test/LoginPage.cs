@@ -17,11 +17,6 @@ namespace GoogleUI_Test
         [TestMethod]
         public void ToVerifyAdactinLoginPage()
         {
-            //Actions action = new Actions(webdriver);
-            //IWebElement element = webdriver.FindElement(By.XPath("//a[contains(text(),'New User Register Here')]"));
-            //action.DoubleClick(element).Build().Perform();
-            //action.SendKeys(element,"iphone").Build().Perform();
-
             webdriver.Manage().Window.Maximize();
             webdriver.Navigate().GoToUrl("http://adactinhotelapp.com/");
             Thread.Sleep(3000);
@@ -54,15 +49,16 @@ namespace GoogleUI_Test
 
             try
             {
+                Actions action = new Actions(webdriver);
                 webdriver.Manage().Window.Maximize();
                 webdriver.Navigate().GoToUrl("http://adactinhotelapp.com/");
                 Thread.Sleep(2000);
-                IWebElement username = webdriver.FindElement(By.XPath("//input[@id='username']"));//.SendKeys("shashibhushan");
-                IWebElement password = webdriver.FindElement(By.XPath("//input[@id='password']"));//.SendKeys("shashibhushan");
-                username.SendKeys("shashibhushan");
-                password.SendKeys("shashibhushan");
-                webdriver.FindElement(By.XPath("//input[@id='login']")).Click();
-                Thread.Sleep(7000);
+                IWebElement username = webdriver.FindElement(By.XPath("//input[@id='username']"));
+                IWebElement password = webdriver.FindElement(By.XPath("//input[@id='password']"));
+                action.SendKeys("shashibhushan");
+                action.SendKeys("shashibhushan");
+                IWebElement ele1= webdriver.FindElement(By.XPath("//input[@id='login']"));
+                webdriver.Manage().Timeouts().ImplicitWait=TimeSpan.FromSeconds(5);
                 SelectElement ele=new SelectElement(webdriver.FindElement(By.XPath("//*[@id='location']")));
                 ele.SelectByValue("Sydney");
                 var data = webdriver.FindElement(By.XPath("//td[@class='welcome_menu']")).Text;
