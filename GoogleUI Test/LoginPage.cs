@@ -1,8 +1,10 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using System;
+using System.Security.AccessControl;
 using System.Threading;
 
 namespace GoogleUI_Test
@@ -11,7 +13,7 @@ namespace GoogleUI_Test
     public class LoginPage
     {
         IWebDriver webdriver = new ChromeDriver();
-
+        
         [TestMethod]
         public void ToVerifyAdactinLoginPage()
         {
@@ -25,13 +27,19 @@ namespace GoogleUI_Test
         [TestMethod]
         public void ToVerifyTheLoginPageWithCredential()
         {
+            Actions action = new Actions(webdriver);
             webdriver.Manage().Window.Maximize();
             webdriver.Navigate().GoToUrl("http://adactinhotelapp.com/");
             Thread.Sleep(2000);
-            webdriver.FindElement(By.XPath("//input[@id='username']")).SendKeys("shashibhushan");
-            webdriver.FindElement(By.XPath("//input[@id='password']")).SendKeys("shashibhushan");
+            IWebElement ele= webdriver.FindElement(By.XPath("//input[@id='username']"));
+            IWebElement ele1 = webdriver.FindElement(By.XPath("//input[@id='password']"));
+            Thread.Sleep(3000);
+            action.SendKeys(ele,"shashibhushan").Build().Perform();
+            action.SendKeys(ele1,"shashibhushan").Build().Perform();
             Thread.Sleep(5000);
-            webdriver.FindElement(By.XPath("//input[@id='login']")).Click();
+            IWebElement eleclick= webdriver.FindElement(By.XPath("//input[@id='login']"));
+            action.Click(eleclick).Build().Perform();
+            webdriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
             var data = webdriver.FindElement(By.XPath("//td[@class='welcome_menu']")).Text;
             Assert.AreEqual(data, "Welcome to Adactin Group of Hotels", "Both data did not Match.");
             webdriver.Close();

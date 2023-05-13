@@ -10,6 +10,7 @@ C:\Users\shash\source\repos\UISeleniumAutomation\GoogleUI Test\bin\Debug\GoogleU
 C:\Users\shash\source\repos\UISeleniumAutomation\GoogleUI Test\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
 C:\Users\shash\source\repos\UISeleniumAutomation\GoogleUI Test\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
 C:\Users\shash\source\repos\UISeleniumAutomation\GoogleUI Test\bin\Debug\WebDriver.dll
+C:\Users\shash\source\repos\UISeleniumAutomation\GoogleUI Test\bin\Debug\WebDriver.Support.dll
 C:\Users\shash\source\repos\UISeleniumAutomation\GoogleUI Test\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
 C:\Users\shash\source\repos\UISeleniumAutomation\GoogleUI Test\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
 C:\Users\shash\source\repos\UISeleniumAutomation\GoogleUI Test\obj\Debug\GoogleUI Test.csproj.AssemblyReference.cache
