@@ -17,7 +17,6 @@ namespace GoogleUI_Test
         [TestMethod]
         public void ToVerifyAdactinLoginPage()
         {
-            
             webdriver.Manage().Window.Maximize();
             webdriver.Navigate().GoToUrl("http://adactinhotelapp.com/");
             Thread.Sleep(4000);
@@ -70,7 +69,6 @@ namespace GoogleUI_Test
             var HotelData = webdriver.FindElement(By.XPath("//td[@class='login_title']")).Text;
             Assert.AreEqual(HotelData, "Select Hotel", "Both data did not Match.");
             webdriver.Close();
-
         }
     }
 }
