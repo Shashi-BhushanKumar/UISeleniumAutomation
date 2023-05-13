@@ -7,8 +7,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using OpenQA.Selenium.Interactions;
-
-
 namespace GoogleUI_Test
 {
     [TestClass]
@@ -19,7 +17,6 @@ namespace GoogleUI_Test
         [TestMethod]
         public void ToVerifyAdactinLoginPage()
         {
-
             //Actions action = new Actions(webdriver);
             //IWebElement element = webdriver.FindElement(By.XPath("//a[contains(text(),'New User Register Here')]"));
             //action.DoubleClick(element).Build().Perform();
