@@ -1,4 +1,4 @@
-name: My CI/CD
+name: My-world
 on: push
 jobs:
   my-job:
