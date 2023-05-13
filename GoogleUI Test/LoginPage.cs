@@ -68,10 +68,7 @@ namespace GoogleUI_Test
             {
                 Console.WriteLine(e);
             }
-            //catch (NoSuchElementException e)
-            //{
-            //    Console.WriteLine("This is generic Exception");
-            //}
+           
 
 
             webdriver.Close();
