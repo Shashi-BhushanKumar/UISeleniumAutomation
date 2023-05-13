@@ -17,6 +17,7 @@ namespace GoogleUI_Test
         [TestMethod]
         public void ToVerifyAdactinLoginPage()
         {
+            
             webdriver.Manage().Window.Maximize();
             webdriver.Navigate().GoToUrl("http://adactinhotelapp.com/");
             Thread.Sleep(4000);
@@ -47,19 +48,24 @@ namespace GoogleUI_Test
         [TestMethod]
         public void ToVerifyTheSearchHotel()
         {
+            Actions action = new Actions(webdriver);
             webdriver.Manage().Window.Maximize();
             webdriver.Navigate().GoToUrl("http://adactinhotelapp.com/");
             Thread.Sleep(2000);
-            webdriver.FindElement(By.XPath("//input[@id='username']")).SendKeys("shashibhushan");
-            webdriver.FindElement(By.XPath("//input[@id='password']")).SendKeys("shashibhushan");
+            IWebElement ele= webdriver.FindElement(By.XPath("//input[@id='username']"));
+            IWebElement ele1 = webdriver.FindElement(By.XPath("//input[@id='password']"));
+            action.SendKeys(ele, "shashibhushan").Build().Perform();
+            action.SendKeys(ele1, "shashibhushan").Build().Perform();
             Thread.Sleep(5000);
-            webdriver.FindElement(By.XPath("//input[@id='login']")).Click();
+            IWebElement eleclick= webdriver.FindElement(By.XPath("//input[@id='login']"));
+            action.Click(eleclick).Build().Perform();
             var data = webdriver.FindElement(By.XPath("//td[@class='welcome_menu']")).Text;
             Assert.AreEqual(data, "Welcome to Adactin Group of Hotels", "Both data did not Match.");
             SelectElement drop = new SelectElement(webdriver.FindElement(By.Id("location")));
             drop.SelectByValue("London");
             Thread.Sleep(3000);
-            webdriver.FindElement(By.XPath("//*[@id='Submit']")).Click();
+            IWebElement submit= webdriver.FindElement(By.XPath("//*[@id='Submit']"));
+            action.Click(submit).Build().Perform();
             Thread.Sleep(3000);
             var HotelData = webdriver.FindElement(By.XPath("//td[@class='login_title']")).Text;
             Assert.AreEqual(HotelData, "Select Hotel", "Both data did not Match.");
