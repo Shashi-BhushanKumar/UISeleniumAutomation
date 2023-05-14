@@ -19,13 +19,16 @@ namespace GoogleUI_Test
         [TestMethod]
         public void ToVerifyOnePlusMobile()
         {
+            Actions action = new Actions(webdriver);
             webdriver.Navigate().GoToUrl("https://www.amazon.in/");
             Thread.Sleep(3000);
-            webdriver.FindElement(By.XPath("//div[@id='nav-xshop']//a[5]")).Click();
-            Thread.Sleep(5000);
-            webdriver.FindElement(By.XPath("//input[@type='checkbox']//following::span[11]")).Click();
-            Thread.Sleep(3000);
-            List<string> ele = new List<string>();
+            IWebElement ele= webdriver.FindElement(By.XPath("//div[@id='nav-xshop']//a[5]"));
+            action.Click(ele).Build().Perform();
+            webdriver.Manage().Timeouts().ImplicitWait=TimeSpan.FromSeconds(3);
+            IWebElement ele1 = webdriver.FindElement(By.XPath("//input[@type='checkbox']//following::span[11]"));
+            action.Click(ele1).Build().Perform();
+            webdriver.Manage().Timeouts().ImplicitWait= TimeSpan.FromSeconds(3);
+            //List<string> ele = new List<string>();
             List<IWebElement> s = webdriver.FindElements(By.XPath("//span[@class='a-size-base-plus a-color-base a-text-normal']")).ToList();
             string first = s[0].Text;
             string second = s[1].Text;
